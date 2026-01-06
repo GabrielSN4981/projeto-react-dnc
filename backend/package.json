@@ -5,17 +5,24 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts"
+    "dev": "tsx watch --inspect src/shared/http/server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
     "@types/node": "^25.0.3",
     "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.22.1",
+    "express-async-errors": "^3.1.1"
   }
 }
