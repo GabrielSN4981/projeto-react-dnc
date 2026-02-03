@@ -1,0 +1,36 @@
+import AppError from "@shared/errors/AppError.js";
+import type { Book } from "../database/entities/Book.js";
+import { booksRepositories } from "../database/repositories/BooksRepositories.js";
+
+interface ICreateBook {
+  title: string;
+  num_pages: number;
+  ISBN: number;
+  publisher: string;
+}
+
+export default class CreateBookService {
+  async execute({
+    title,
+    num_pages,
+    ISBN,
+    publisher,
+  }: ICreateBook): Promise<Book> {
+    const bookExists = await booksRepositories.findByTitle(title);
+
+    if (bookExists) {
+      throw new AppError("Book already exists.", 409);
+    }
+
+    const book = booksRepositories.create({
+      title,
+      num_pages,
+      ISBN,
+      publisher,
+    });
+
+    await booksRepositories.save(book);
+
+    return book;
+  }
+}
