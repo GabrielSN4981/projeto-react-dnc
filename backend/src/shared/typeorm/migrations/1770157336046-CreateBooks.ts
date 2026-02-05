@@ -23,8 +23,10 @@ export class CreateBooks1770157336046 implements MigrationInterface {
             type: "int",
           },
           {
-            name: "ISBN",
-            type: "int",
+            name: "isbn",
+            type: "varchar",
+            length: "13",
+            isUnique: true,
           },
           {
             name: "publisher",

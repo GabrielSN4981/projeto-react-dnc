@@ -5,7 +5,7 @@ import { booksRepositories } from "../database/repositories/BooksRepositories.js
 interface ICreateBook {
   title: string;
   num_pages: number;
-  ISBN: number;
+  isbn: string;
   publisher: string;
 }
 
@@ -13,7 +13,7 @@ export default class CreateBookService {
   async execute({
     title,
     num_pages,
-    ISBN,
+    isbn,
     publisher,
   }: ICreateBook): Promise<Book> {
     const bookExists = await booksRepositories.findByTitle(title);
@@ -25,7 +25,7 @@ export default class CreateBookService {
     const book = booksRepositories.create({
       title,
       num_pages,
-      ISBN,
+      isbn,
       publisher,
     });
 
@@ -34,3 +34,4 @@ export default class CreateBookService {
     return book;
   }
 }
+

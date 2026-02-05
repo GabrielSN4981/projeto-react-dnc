@@ -11,16 +11,16 @@ export class Book {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "text" })
+  @Column({ type: "varchar" })
   title: string;
 
   @Column({ type: "int" })
   num_pages: number;
 
-  @Column({ type: "bigint" })
-  ISBN: number;
+  @Column({ type: "varchar", length: 13, unique: true })
+  isbn: string;
 
-  @Column({ type: "text" })
+  @Column({ type: "varchar" })
   publisher: string;
 
   @CreateDateColumn({ type: "timestamp" })

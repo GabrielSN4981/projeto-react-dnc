@@ -9,4 +9,8 @@ export const booksRepositories = AppDataSource.getRepository(Book).extend({
   async findByTitle(title: string): Promise<Book | null> {
     return this.findOneBy({ title });
   },
+
+  async findByISBN(isbn: string): Promise<Book | null> {
+    return this.findOneBy({ isbn });
+  },
 });
